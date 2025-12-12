@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+<script>
+(async () => {
+  await liff.init({ liffId: "YOUR_LIFF_ID" });
+
+  if (!liff.isLoggedIn()) {
+    return liff.login();
+  }
+
+  const profile = await liff.getProfile();
+  const uid = profile.userId;
+
+  const formURL =
+    "YOUR_GOOGLE_FORM_URL"
+    + "&entry.XXXXXX=" + encodeURIComponent(uid);
+
+  window.location.href = formURL;
+})();
+</script>
+</body>
+</html>
